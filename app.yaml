@@ -1,0 +1,106 @@
+allow-lan: true
+bind-address: '*'
+cfw-bypass:
+- localhost
+- 127.*
+- 10.*
+- 192.168.*
+- <local>
+cfw-bypass-bak:
+- localhost
+- 127.*
+- 10.*
+- 192.168.*
+- <local>
+cfw-conn-break-strategy:
+  mode: false
+  profile: true
+  proxy: none
+cfw-latency-timeout: 3000
+cfw-latency-url: http://www.gstatic.com/generate_204
+cfw-proxies-order: latency
+dns:
+  enable: true
+  enhanced-mode: redir-host
+  ipv6: false
+  listen: 127.0.0.1:5450
+  nameserver:
+  - 1.1.1.1
+  - 1.0.0.1
+experimental:
+  ignore-resolve-fail: true
+external-controller: 127.0.0.1:9090
+ipv6: true
+log-level: info
+mixed-port: 7890
+proxies:
+- alterId: '0'
+  cipher: chacha20-poly1305
+  http-opts:
+    path:
+    - /watch
+  name: "\U0001F1F9\U0001F1F7\U0001F1EE\U0001F1F7 @Dev_Null [Intranet-01]"
+  network: http
+  port: 443
+  server: 185.128.40.198
+  servername: proservices.app
+  sni: proservices.app
+  tls: true
+  type: vmess
+  uuid: 2f539c87-cc89-1f87-9bc1-399cac0bd87d
+- alterId: '0'
+  cipher: chacha20-poly1305
+  http-opts:
+    path:
+    - /watch
+  name: "\U0001F1F9\U0001F1F7 @Dev_Null [TR-02]"
+  network: http
+  port: 443
+  server: 5.105.5.66
+  servername: iprostable.enterprises
+  sni: iprostable.enterprises
+  tls: true
+  type: vmess
+  uuid: 2f539c87-cc89-1f87-9bc1-399cac0bd87d
+- alterId: '0'
+  cipher: chacha20-poly1305
+  http-opts:
+    path:
+    - /watch
+  name: "\U0001F1F9\U0001F1F7 @Dev_Null [TR-06]"
+  network: http
+  port: 443
+  server: 5.105.5.106
+  servername: iprostable.enterprises
+  sni: iprostable.enterprises
+  tls: true
+  type: vmess
+  uuid: 2f539c87-cc89-1f87-9bc1-399cac0bd87d
+- alterId: '0'
+  cipher: chacha20-poly1305
+  http-opts:
+    path:
+    - /watch
+  name: "\U0001F1F9\U0001F1F7 @Dev_Null [TR-04]"
+  network: http
+  port: 443
+  server: 5.105.5.59
+  servername: iprostable.enterprises
+  sni: iprostable.enterprises
+  tls: true
+  type: vmess
+  uuid: 2f539c87-cc89-1f87-9bc1-399cac0bd87d
+proxy-groups:
+- interval: 300
+  name: '[@Dev_Null] Auto'
+  proxies:
+  - "\U0001F1F9\U0001F1F7\U0001F1EE\U0001F1F7 @Dev_Null [Intranet-01]"
+  - "\U0001F1F9\U0001F1F7 @Dev_Null [TR-06]"
+  - "\U0001F1F9\U0001F1F7 @Dev_Null [TR-04]"
+  - "\U0001F1F9\U0001F1F7 @Dev_Null [TR-02]"
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+rules:
+- GEOIP,IR,DIRECT
+- MATCH,[@Dev_Null] Auto
+socks-port: 7891
